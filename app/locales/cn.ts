@@ -8,7 +8,7 @@ const cn = {
   Error: {
     Unauthorized: isApp
       ? "检测到无效 API Key，请前往[设置](/#/settings)页检查 API Key 是否配置正确"
-      : "请直接输入，若仍返回此信息，请返回www.smartpal.chat重新输入账户信息！",
+      : "请直接输入，若仍返回此信息，请返回hefei.smartpal.chat重新输入账户信息！",
   },
   Auth: {
     Title: "需要密码",

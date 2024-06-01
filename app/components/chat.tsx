@@ -9,6 +9,8 @@ interface MyTokenPayload extends JwtPayload {
   password: string;
   gptAuth: string;
   profile: string;
+  prompt: string;
+  course: string;
 }
 import { useDebouncedCallback } from "use-debounce";
 import React, {
@@ -564,7 +566,9 @@ function _Chat() {
       if (decodedToken.profile){
         chatStore.updateCurrentSession(session => {
           const updatedMask = { ...session.mask }; // Copy the current mask
-          updatedMask.context[0].content = decodedToken.profile; // Modify the context by adding a new item
+          updatedMask.context[0].content = decodedToken.prompt; // Modify the context by adding a new item
+          updatedMask.context[1].content = decodedToken.profile; // Modify the context by adding a new item
+          updatedMask.context[2].content = decodedToken.course; // Modify the context by adding a new item
           session.mask = updatedMask; // Set the modified mask back to the session
           console.log("now the context is", session.mask.context[0].content);
       });
