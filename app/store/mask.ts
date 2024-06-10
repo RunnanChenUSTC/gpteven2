@@ -35,7 +35,7 @@ export const createEmptyMask = () =>
     context: [
       {
         id: "scorates-0",
-        role: "system",
+        role: "user",
         content:
           "placeholder",
         date: "",
