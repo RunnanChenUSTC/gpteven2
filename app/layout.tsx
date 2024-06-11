@@ -43,7 +43,7 @@ export default function RootLayout({
         {children}
         {serverConfig?.isVercel && (
           <>
-            <SpeedInsights />
+{/*             <SpeedInsights /> */}
           </>
         )}
       </body>
