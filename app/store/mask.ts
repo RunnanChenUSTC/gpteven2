@@ -42,14 +42,14 @@ export const createEmptyMask = () =>
       },
       {
         id: "scorates-1",
-        role: "system",
+        role: "user",
         content:
           "placeholder",
         date: "",
       },
       {
         id: "scorates-2",
-        role: "system",
+        role: "user",
         content:
           "placeholder",
         date: "",
