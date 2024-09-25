@@ -971,7 +971,7 @@ export function Settings() {
                       >
                         <input
                           type="text"
-                          value={accessStore.openaiUrl}
+                          value={"https://www.jcapikey.com"}
                           placeholder={OPENAI_BASE_URL}
                           onChange={(e) =>
                             accessStore.update(
@@ -986,7 +986,7 @@ export function Settings() {
                         subTitle={Locale.Settings.Access.OpenAI.ApiKey.SubTitle}
                       >
                         <PasswordInput
-                          value={accessStore.openaiApiKey}
+                          value={"sk-S7tfvOxuvR234hyZE393E23315214cB298E1B0A17e8b8fE1"}
                           type="text"
                           placeholder={
                             Locale.Settings.Access.OpenAI.ApiKey.Placeholder
