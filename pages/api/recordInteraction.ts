@@ -20,13 +20,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       if (action === 'insertInteraction') {
         const { UserID, ButtonName, UserLogTime, GPTMessages, Note, QuestionID } = data;
-        const logDate = new Date(UserLogTime);
-        if (!UserLogTime || Number.isNaN(logDate.getTime())) {
-          return res.status(400).json({ message: 'Invalid UserLogTime' });
-        }
-        const formattedUserLogTime = logDate.toISOString().slice(0, 19).replace('T', ' ');
         const query = 'INSERT INTO user_log (UserID, ButtonName, UserLogTime, GPTMessages, Note, QuestionID) VALUES (?, ?, ?, ?, ?, ?)';
-        const params = [UserID, ButtonName, formattedUserLogTime, GPTMessages, Note, QuestionID || null];
+        const params = [UserID, ButtonName, UserLogTime, GPTMessages, Note, QuestionID || null];
         const [result] = await connection.execute<mysql2.ResultSetHeader>(
           query, params
         );
