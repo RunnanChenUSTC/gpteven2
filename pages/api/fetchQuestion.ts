@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import pool from '../../lib/db';
+import mysql2 from 'mysql2/promise';
 import { RowDataPacket } from 'mysql2';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -8,12 +8,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
 
+  const connectionConfig = {
+    host: 'mysqlserverless.cluster-cautknyafblq.us-east-1.rds.amazonaws.com',
+    user: 'admin',
+    password: '35nPQH!ut;anvcA',
+    database: 'GPT_experiment',
+  };
+
   try {
+    const connection = await mysql2.createConnection(connectionConfig);
     const { action, questionId } = req.body;
 
     // 处理基于questionId的查询
     if (action === 'fetchQuestion') {
-      const [rows] = await pool.execute<RowDataPacket[]>(
+      const [rows] = await connection.execute<RowDataPacket[]>(
         'SELECT Content FROM Question_UMN WHERE QuestionID = ?',
         [questionId]
       );
