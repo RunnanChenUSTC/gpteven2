@@ -103,7 +103,7 @@ Latex inline: $x^2$
 Latex block: $$e=mc^2$$
 `;
 
-export const SUMMARIZE_MODEL = "gpt-6-astra";
+export const SUMMARIZE_MODEL = "gpt-3.5-turbo";
 
 export const KnowledgeCutOffDate: Record<string, string> = {
   default: "2021-09",
@@ -113,7 +113,7 @@ export const KnowledgeCutOffDate: Record<string, string> = {
 
 export const DEFAULT_MODELS = [
   {
-    name: "gpt-6-astra",
+    name: "gpt-4",
     available: true,
     provider: {
       id: "openai",
@@ -122,7 +122,7 @@ export const DEFAULT_MODELS = [
     },
   },
   {
-    name: "gpt-6-astra",
+    name: "gpt-4-0314",
     available: true,
     provider: {
       id: "openai",
@@ -131,7 +131,7 @@ export const DEFAULT_MODELS = [
     },
   },
   {
-    name: "gpt-6-astra",
+    name: "gpt-4-0613",
     available: true,
     provider: {
       id: "openai",
@@ -140,7 +140,7 @@ export const DEFAULT_MODELS = [
     },
   },
   {
-    name: "gpt-6-astra",
+    name: "gpt-4-32k",
     available: true,
     provider: {
       id: "openai",
@@ -149,7 +149,7 @@ export const DEFAULT_MODELS = [
     },
   },
   {
-    name: "gpt-6-astra",
+    name: "gpt-4-32k-0314",
     available: true,
     provider: {
       id: "openai",
@@ -158,7 +158,7 @@ export const DEFAULT_MODELS = [
     },
   },
   {
-    name: "gpt-6-astra",
+    name: "gpt-4-32k-0613",
     available: true,
     provider: {
       id: "openai",
@@ -167,7 +167,7 @@ export const DEFAULT_MODELS = [
     },
   },
   {
-    name: "gpt-6-astra",
+    name: "gpt-4-1106-preview",
     available: true,
     provider: {
       id: "openai",
@@ -176,7 +176,7 @@ export const DEFAULT_MODELS = [
     },
   },
   {
-    name: "gpt-6-astra",
+    name: "gpt-4-vision-preview",
     available: true,
     provider: {
       id: "openai",
@@ -185,7 +185,7 @@ export const DEFAULT_MODELS = [
     },
   },
   {
-    name: "gpt-6-astra",
+    name: "gpt-3.5-turbo",
     available: true,
     provider: {
       id: "openai",
@@ -194,7 +194,7 @@ export const DEFAULT_MODELS = [
     },
   },
   {
-    name: "gpt-6-astra",
+    name: "gpt-3.5-turbo-0301",
     available: true,
     provider: {
       id: "openai",
@@ -203,7 +203,7 @@ export const DEFAULT_MODELS = [
     },
   },
   {
-    name: "gpt-6-astra",
+    name: "gpt-3.5-turbo-0613",
     available: true,
     provider: {
       id: "openai",
@@ -212,7 +212,7 @@ export const DEFAULT_MODELS = [
     },
   },
   {
-    name: "gpt-6-astra",
+    name: "gpt-3.5-turbo-1106",
     available: true,
     provider: {
       id: "openai",
@@ -221,7 +221,7 @@ export const DEFAULT_MODELS = [
     },
   },
   {
-    name: "gpt-6-astra",
+    name: "gpt-3.5-turbo-16k",
     available: true,
     provider: {
       id: "openai",
@@ -230,16 +230,7 @@ export const DEFAULT_MODELS = [
     },
   },
   {
-    name: "gpt-6-astra",
-    available: true,
-    provider: {
-      id: "openai",
-      providerName: "OpenAI",
-      providerType: "openai",
-    },
-  },
-  {
-    name: "gpt-6-astra",
+    name: "gpt-3.5-turbo-16k-0613",
     available: true,
     provider: {
       id: "openai",
@@ -249,11 +240,11 @@ export const DEFAULT_MODELS = [
   },
   {
     name: "gemini-pro",
-    available: false,
+    available: true,
     provider: {
-      id: "openai",
-      providerName: "OpenAI",
-      providerType: "openai",
+      id: "google",
+      providerName: "Google",
+      providerType: "google",
     },
   },
 ] as const;
