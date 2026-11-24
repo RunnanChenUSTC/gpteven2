@@ -1,23 +1,25 @@
 import mysql from 'mysql2/promise';
 
-// 同一进程复用连接池；Serverless 的不同实例仍各自拥有一个池。
-const globalForDb = globalThis as typeof globalThis & {
-  mysqlPool?: mysql.Pool;
-};
-
-const pool = globalForDb.mysqlPool ?? mysql.createPool({
+const config: mysql.ConnectionOptions = {
   host: 'mysqlserverless.cluster-cautknyafblq.us-east-1.rds.amazonaws.com',
   user: 'admin',
   password: '35nPQH!ut;anvcA',
   database: 'GPT_experiment',
-  connectionLimit: 2,
-  maxIdle: 1,
-  idleTimeout: 10_000,
-  connectTimeout: 10_000,
-  waitForConnections: true,
-  queueLimit: 50
-});
+  connectTimeout: 10_000
+};
 
-globalForDb.mysqlPool = pool;
+// 每次查询新建连接，用完立即关闭。
+// Serverless 实例冻结时不会留下空闲连接占用数据库。
+async function execute<T>(sql: string, values: any[] = []): Promise<[T]> {
+  const connection = await mysql.createConnection(config);
+  try {
+    const [result] = await connection.execute(sql, values);
+    return [result] as unknown as [T];
+  } finally {
+    await connection.end().catch(() => connection.destroy());
+  }
+}
 
-export default pool;
+const db = { execute };
+
+export default db;
